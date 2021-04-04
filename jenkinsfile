@@ -17,9 +17,8 @@ pipeline {
             }
             stage ("NEXUS ARTIFACT UPLOAD"){
             steps{
-            
-          nexusArtifactUploader artifacts: [[artifactId: 'devopsmavenproject', classifier: '', file: 'devopsmavenproject/target/devopsmavenproject', type: 'war']], credentialsId: '', groupId: 'devopsmavenproject', nexusUrl: '3.141.194.53:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'http://3.141.194.53:8081/repository/maven-snapshots/', version: '1-snapshot'
-        }
+          nexusArtifactUploader artifacts: [[artifactId: 'addressbook', classifier: '', file: 'jenkins/target/addressbook.war', type: 'war']], credentialsId: '', groupId: 'devopsmavenproject', nexusUrl: '3.141.194.53:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'http://3.141.194.53:8081/repository/maven-snapshots/', version: '1-snapshot'  
+          }
         }
     
         stage('code_review') {
