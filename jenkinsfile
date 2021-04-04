@@ -14,10 +14,13 @@ pipeline {
             steps {
                 sh 'mvn compile'
             }
-            steps("NEXUS ARTIFACT UPLOAD"){
+            stage ("NEXUS ARTIFACT UPLOAD"){
+            steps{
+            
             nexusArtifactUploader credentialsId: '', groupId: 'devopsmavenproject', nexusUrl: '3.141.194.53:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'http://3.141.194.53:8081/repository/maven-snapshots/', version: '1-snapshot'
         }
-    }
+        }
+    
         stage('code_review') {
             steps {
                 sh 'mvn -P metrics pmd:pmd'
